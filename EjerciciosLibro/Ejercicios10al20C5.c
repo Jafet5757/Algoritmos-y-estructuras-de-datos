@@ -24,7 +24,7 @@ int main(){
 	int m,a;
 	do
 	{
-		puts("Introduzca año entero: ");
+		puts("Introduzca aï¿½o entero: ");
 		fflush(stdin);
 		scanf("%d",&a);
 	}while(a<0);
@@ -35,7 +35,7 @@ int main(){
 		scanf("%d",&m);
 	}while((m<0)||(m>12));
 	puts("El numero de dias");
-	printf("del mes %d del año %d es: \n",m,a);
+	printf("del mes %d del aï¿½o %d es: \n",m,a);
 	printf(" %d ",ndd(m,a));
 	return 0;
 }
@@ -59,7 +59,7 @@ int main(){
 	puts("Introduzca el mes entre 1 y 12: ");
 	fflush(stdin);
 	scanf("%d",&mes);
-	puts("Introduzca el año: ");
+	puts("Introduzca el aï¿½o: ");
 	fflush(stdin);
 	scanf("%d",&anio);
 	if (mes == 2){
@@ -296,3 +296,44 @@ void main(){
 		printf("%d != 0\n",x);
 	}
 }*/
+
+//Ejercicio 5.9
+
+/*int bisiesto(int x);
+
+int main(){
+	int x;
+	puts("Introduzca el aÃ±o entero");
+	scanf(" %d", &x);
+	if(bisiesto(x))
+		printf("%d es bisiesto\n", x);
+	else
+		printf (" %d no es un aÃ±o bisiesto \n", x);
+	
+	return 0;
+}
+
+int bisiesto(int x){
+	if(x % 400 == 0)
+		return 1;
+	else if(x % 100 == 1)
+		return 0;
+	else 
+		return (x % 4 == 0);
+}*/
+
+
+//Ejercicio 5.7
+
+int main(){
+	int x = 10;
+	if(x<0)
+		printf("%d es negativo\n",x);
+	else if (x<= 100)
+		printf("0 <= x = %d <= 100<\n",x);
+	else
+		printf("x = %d  > 100\n", x);
+	
+	return 0;
+
+}

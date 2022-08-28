@@ -206,7 +206,7 @@ int main(){
 
 //Ejercicio 4.20
 
-int main(){
+/*int main(){
 	int n1,n2,n3,n4;
 	float media;
 	puts("Introduzca 4 numeros enteros: ");
@@ -215,5 +215,34 @@ int main(){
 	media = (n1 + n2 + n3 + n4) / 4.0;
 	printf("La media es: %f",media);
 	return 0;
+}*/
+
+//Ejercicio 4.8
+/*const int M = 6;
+
+int main(){
+	int a,b,c;
+	puts("Introduce el valor de a y de b");
+	scanf("%d%d",&a,&b); //Recibe 2 valores separados por enter
+	c = 2 * a-b;
+	c -= M;
+	b = a+c -M;
+	a = b * M;
+	printf("\n a = %d\n",a);
+	b =- 1;
+	printf("b=%6d c=%6d",b,c); //in the .precision format for integer specifiers (d, i, o, u, x, X), precision specifies the minimum number of digits to be written.
+
+	return 0;
+}*/
+
+//Ejercicio 4.7
+int main(){
+	float x,y;
+	printf("Dame la longitud de la habitación\n");
+	scanf("%f",&x);
+	printf("Dame el ancho de la habitación\n");
+	scanf("%f",&y);
+	printf("Su superficie es %10.4f", x*y);
+
+	return 0;
 }
-//Ejercicios del tema 4 terminados :D

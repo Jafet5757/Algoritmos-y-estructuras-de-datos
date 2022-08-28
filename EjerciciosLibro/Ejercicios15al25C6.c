@@ -242,7 +242,7 @@ int main(){
 }*/
 
 //Ejercicio 6.25
-int main(){
+/*int main(){
 	int n1, i, fact;
 	do
 	{
@@ -271,4 +271,56 @@ int main(){
 	}while(i < n1);
 	printf("Con bucle do-while: %d\n",fact);
 	return 0;
-}
+}*/
+
+//Ejercicio 6.14
+/*int main(){
+	int n, m, mcm;
+
+	do{
+		printf("Valor de n>0 \n");
+		scanf("%d", &n);
+	} while (n <= 0);
+
+	do
+	{
+		printf("valor de m > 0\n");
+		scanf("%d", &m);
+	} while (m <= 0);
+	
+
+	if(n<m){
+		mcm = n;
+	}else{
+		mcm = n;
+	}
+
+	while((mcm % m != 0)||(mcm % n != 0))
+		mcm++;
+	printf(" el minimo comun multiplo es %3d\n", mcm);
+
+	return 0;
+}*/
+
+//Ejercicio 6.12
+/*int main(){
+	int i, n, n1;
+	do
+	{
+		printf("valor de n >0\n");
+		scanf("%d", &n);
+	} while (n <= 0);
+	
+	while(n <= 0);
+	n1 = 0;
+
+	while( n != 0){
+		i = n % 10;
+		n = n / 10;
+		n1 = n1 * 10 + i;
+	}
+
+	printf(" número invertido %d", n1);  
+	
+	return 0;
+}*/

@@ -183,3 +183,31 @@ int resto(int n, int m){
 	}
 	return (Mayor - acu - menor);
 }*/
+
+//Ejercicio 7.8
+/*long int funcionx(int n);
+
+int main(){
+	int n,i;
+	printf("Cuantos numeros de la funcionx ?: ");
+	scanf("%d",&n);
+	printf("\nSecuancia de funcionx: 0,1,2");
+	for(i=3; i<=n; i++){
+		printf(",%d",funcionx(i));
+	}
+}
+
+long int funcionx(int n){
+	long int x = 0 ,y = 1,z = 2, i, aux;
+	if(n <= 2)
+		return n;
+	else{
+		for(i = 3; i<=n; i++){
+			aux = x + 2 *y +z;
+			x = y;
+			y = z;
+			z = aux;
+		}
+		return z;
+	}
+}*/
