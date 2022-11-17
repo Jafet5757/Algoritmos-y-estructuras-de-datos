@@ -17,7 +17,7 @@ int obtenerMenor(int *fila, int n, int * columnaExcluida){
 
     //primero aignamos cualquier valor a menor y pos que no haya sido excluido
     for(int i=0; i<n; i++){
-        if(!columnaExcluida[i]){
+        if(!columnaExcluida[i] && fila[i]!=0){
             menor = fila[i];
             pos = i;
         }
@@ -25,7 +25,7 @@ int obtenerMenor(int *fila, int n, int * columnaExcluida){
 
 
     for(int i=0; i<n; i++){
-        if(fila[i]<=menor && !columnaExcluida[i]){
+        if(fila[i]<=menor && !columnaExcluida[i] && fila[i]!=0){
             menor = fila[i];
             pos = i;
         }
