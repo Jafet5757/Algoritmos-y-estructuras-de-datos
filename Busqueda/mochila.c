@@ -77,6 +77,7 @@ int main(){
             valorTemp += valor[permutations[i][j]];
             if(pesoTemp>5){
                 pesoTemp -= peso[permutations[i][j]];
+                valorTemp -= valor[permutations[i][j]];
                 break;
             }
             j++;
@@ -104,7 +105,7 @@ int main(){
     }
 
     //Imprimimos el menor valor con los elementos de la mochila
-    printf("\nPeso: %d\nValor: %d\nPeso por elemento | Valor por elemento ", peso, valor);
+    printf("\nPeso: %d\nValor: %d\nPeso por elemento | Valor por elemento ", pesoMochila, valorMax);
     int pesoTemp = 0;
     int j = 0;
     while(pesoTemp<pesoMax && j<N){
