@@ -13,7 +13,12 @@ int tablero[n][n];
 
 //retorna 1 si esta vacia y 0 si no
 int comprobarSiColumnaVacia(int fila){
-    return (tablero[fila][0] == 0);
+    for(int i=0; i<n; i++){
+        if(tablero[fila][i] == 0){
+            return 1;
+        }
+    }
+    return 0;
 }
 
 //Comprueba si hay 1, si lo hay retorna 0 y si esta vacia retorna 1
@@ -33,20 +38,22 @@ int inicializarTablero(){
 
 //coloca un 2 a la reina y 1 a los espacios amenazados
 int colocarReina(int x, int y){
-    tablero[x][y] = 2;
     //unos en horizontal y vertical
     for(int i=0; i<n; i++){
         tablero[x][i] = 1;
         tablero[i][y] = 1;
     }
+    //Colocamos reina
+    tablero[x][y] = 2;
+
     //Unos en la diagonal izquierda
     for(int i=0; i<n; i++){
-        if(i<x && tablero[x-1][y+1]!=2 && tablero[x-1][y+1]!=2){
-            tablero[x-1][y+1] = 1;
-            tablero[x-1][y-1] = 1;
-        }else if(i>x && tablero[x+1][y-1]!=2 && tablero[x+1][y+1]!=2){
-            tablero[x+1][y-1] = 1;
-            tablero[x+1][y+1] = 1;
+        if(i<x && tablero[x-i][y+i]!=2 && tablero[x-i][y+i]!=2){
+            tablero[x-i][y+i] = (x-i>=0 && y+i<n) ? 1 : tablero[x-i][y+i];
+            tablero[x-i][y-i] = (x-i>=0 && y-i>=0) ? 1 : tablero[x-i][y-i];
+        }else if(i>x && tablero[x+i][y-i]!=2 && tablero[x+i][y+i]!=2){
+            tablero[x+i][y-i] = (x+i<n && y-i>=0)?1:tablero[x+i][y-i];
+            tablero[x+i][y+i] = (x+i<n && y+i<n)?1:tablero[x+i][y+i];
         }
     }
     

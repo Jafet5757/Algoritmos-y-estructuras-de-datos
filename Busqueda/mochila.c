@@ -75,7 +75,7 @@ int main(){
         while(pesoTemp<pesoMax && j<N){
             pesoTemp += peso[permutations[i][j]];
             valorTemp += valor[permutations[i][j]];
-            if(pesoTemp>5){
+            if(pesoTemp>pesoMax){
                 pesoTemp -= peso[permutations[i][j]];
                 valorTemp -= valor[permutations[i][j]];
                 break;
