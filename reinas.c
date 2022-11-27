@@ -10,11 +10,15 @@
 #define n 8
 
 int tablero[n][n];
+int xTemp;
+int yTemp;
 
 //retorna 1 si esta vacia y 0 si no
 int comprobarSiColumnaVacia(int fila){
     for(int i=0; i<n; i++){
         if(tablero[fila][i] == 0){
+            xTemp = fila;
+            yTemp = i;
             return 1;
         }
     }
@@ -48,10 +52,10 @@ int colocarReina(int x, int y){
 
     //Unos en la diagonal izquierda
     for(int i=0; i<n; i++){
-        if(i<x && tablero[x-i][y+i]!=2 && tablero[x-i][y+i]!=2){
+        /*if(i<x && tablero[x-i][y+i]!=2 && tablero[x-i][y+i]!=2){
             tablero[x-i][y+i] = (x-i>=0 && y+i<n) ? 1 : tablero[x-i][y+i];
             tablero[x-i][y-i] = (x-i>=0 && y-i>=0) ? 1 : tablero[x-i][y-i];
-        }else if(i>x && tablero[x+i][y-i]!=2 && tablero[x+i][y+i]!=2){
+        }else*/ if(i>x && tablero[x+i][y-i]!=2 && tablero[x+i][y+i]!=2){
             tablero[x+i][y-i] = (x+i<n && y-i>=0)?1:tablero[x+i][y-i];
             tablero[x+i][y+i] = (x+i<n && y+i<n)?1:tablero[x+i][y+i];
         }
@@ -72,24 +76,22 @@ int main()
 {
     
     int filaExceptuada[n], columnaExceptuada[n], diagonalIzquierdaExceptuada[(n*2)-1], diagonalDerechaexceptuada[(n*2)-1];
-    
+    int reinas = 0;
     //Inicializamos el tablero en cero
     inicializarTablero(tablero);
     
+    //Colocamos las reinas
     for(int i=0; i<n; i++){
-        if(comprobarSiColumnaVacia(i)){
-            //Buscamos en la columna un lugar donde no haya unos
-            for(int j=0; j<n; j++){
-                if(comprobarSiUnoAlRededor(i,j) && tablero[i][j]!=1){
-                    //ponemos la reina en esta coordenada
-                    colocarReina(i,j);
-                    break;
-                }
+        for(int j=0; j<n; j++){
+            if(comprobarSiColumnaVacia(i)){
+                reinas++;
+                colocarReina(xTemp,yTemp);
             }
         }
     }
 
     imprimeArreglo(tablero, n);
+    printf("Reinas: %d", reinas);
 
     return 0;
 }
