@@ -77,16 +77,15 @@ int main()
     
     int filaExceptuada[n], columnaExceptuada[n], diagonalIzquierdaExceptuada[(n*2)-1], diagonalDerechaexceptuada[(n*2)-1];
     int reinas = 0;
+    int
     //Inicializamos el tablero en cero
-    inicializarTablero(tablero);
+    inicializarTablero();
     
     //Colocamos las reinas
     for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++){
-            if(comprobarSiColumnaVacia(i)){
-                reinas++;
-                colocarReina(xTemp,yTemp);
-            }
+        if(comprobarSiColumnaVacia(i)){
+            reinas++;
+            colocarReina(xTemp,yTemp);
         }
     }
 
