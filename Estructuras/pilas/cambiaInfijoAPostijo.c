@@ -56,13 +56,50 @@ int comprobarSiEsNumero(char c){
     return 0;
 }
 
+int obtenerValorCaracter(char a){
+    switch(a){
+        case '0': return 0;
+        case '1': return 1;
+        case '2': return 2;
+        case '3': return 3;
+        case '4': return 4;
+        case '5': return 5;
+        case '6': return 6;
+        case '7': return 7;
+        case '8': return 8;
+        case '9': return 9;
+        default: return 0;
+    }
+}
+
+int evaluamos(char *text, int size){
+    int resultado = 0;
+    for(int i=0; i<size; i++){
+        //Primero damos una vuelta buscando multiplicaciones o divisiones
+        if(text[i]=='*'){
+            resultado += (resultado==0?((int)obtenerValorCaracter(text[i-1])):resultado) * ((int)obtenerValorCaracter(text[i+1]));
+        }else if(text[i]=='+'){
+            //Ahora solo valuamos las sumas y restas
+            resultado += (resultado==0?((int)obtenerValorCaracter(text[i-1])):resultado) + ((int)obtenerValorCaracter(text[i+1]));
+        }else if(text[i]=='/'){
+            //Ahora solo valuamos las sumas y restas
+            resultado += (resultado==0?((int)obtenerValorCaracter(text[i-1])):resultado) / ((int)obtenerValorCaracter(text[i+1]));
+        }else if(text[i]=='-'){
+            //Ahora solo valuamos las sumas y restas
+            resultado += (resultado==0?((int)obtenerValorCaracter(text[i-1])):resultado) - ((int)obtenerValorCaracter(text[i+1]));
+        }
+    }
+    return resultado;
+}
+
 int main(){
 
     Pila p;
     inicializacion(&p);
 
     //Iniciamos con la lógica del traductor
-    char text[] = "(1+2-3)";
+    //No debe haber numeros de más de un digito, solo sumas y multiplicación
+    char text[] = "(1+2*3)";
     int size = sizeof(text)/sizeof(text[0]);
     char newExpression [size];
     int contadorNuevaExpresion = 0;
@@ -133,6 +170,8 @@ int main(){
     for(int i=0; i<contadorNuevaExpresion; i++){
         printf("%c", newExpression[i]);
     }
+
+    printf("\nResultad = %d", evaluamos(text, size));
 
     return 0;
 }
