@@ -36,6 +36,17 @@ void empty(Stack *s) {
     s -> size = 0;
 }
 
+//This function write a string in a txt file
+void write(char *text, char *fileName){
+    FILE *file = fopen(fileName, "w");
+    if(file == NULL){
+        printf("Error al abrir el archivo");
+        return;
+    }
+    fprintf(file, "%s", text);
+    fclose(file);
+}
+
 Element pop(Stack *s){
     Element e;
     if(s -> start == NULL){
@@ -72,7 +83,8 @@ int main(){
         puts("2. Eliminar N letras");
         puts("3. Leer");
         puts("4. Deshacer");
-        puts("5. Salir");
+        puts("5. Guardar en un documento de texto");
+        puts("6. Salir");
         printf("\nIngrese opcion: ");
         fflush(stdin);
         scanf("%d", &opc);
@@ -137,9 +149,45 @@ int main(){
                 Element e = pop(&deleted);
                 push(&text, e);
             }
+        }else if(opc == 5){
+            //write the text in a txt file
+            char fileName[100];
+            printf("\nIngrese el nombre del archivo: ");
+            fflush(stdin);
+            scanf("%s", fileName);
+            strcat(fileName, ".txt");
+            Element e;
+            Stack tempText;
+            init(&tempText);
+            //Read de text stack to a temp stack
+            do{
+                e = pop(&text);
+                if(e.data != NULL){
+                    push(&tempText, e);
+                }
+            }while(e.data != NULL);
+
+            //write the text
+            char documentText[100];
+            int i = 0;
+            do{
+                e = pop(&tempText);
+                if(e.data != NULL){
+                    documentText[i] = e.data;
+                    i++;
+                    push(&text, e); //return the text to the text stack
+                }
+            }while(e.data != NULL);
+            documentText[i] = '\0';
+            puts(documentText);
+            write(documentText, fileName);
         }else{
-            printf("\nAdios\n");
-            opc =  -1;
+            //exit
+            empty(&text);
+            empty(&undo);
+            empty(&deleted);
+            puts("Gracias por usar JKM Text Editor");
+            opc=-1;
         }
     }while(opc>0);
 
