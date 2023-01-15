@@ -88,11 +88,10 @@ int main(){
                 Element e;
                 e.data = tempText[i];
                 push(&text, e);
+                //add the instruction to undo
+                e.data = '1';
+                push(&undo, e);
             }
-            //add the instruction to undo
-            Element e;
-            e.data = '1';
-            push(&undo, e);
         }else if(opc == 2){
             //delete the text from the text stack
             int n;
@@ -103,7 +102,6 @@ int main(){
                 Element e = pop(&text);
                 push(&deleted, e);
                 //add the instruction to undo, each letter is a instruction
-                Element e;
                 e.data = '2';
                 push(&undo, e);
             }
@@ -133,14 +131,12 @@ int main(){
             Element e = pop(&undo);
             if(e.data == '1'){
                 //undo the last add
-                Element e = pop(&undo);
+                pop(&text);  
             }else if(e.data == '2'){
                 //undo the last delete
                 Element e = pop(&deleted);
                 push(&text, e);
             }
-            //delete the last instruction
-            pop(&undo);
         }else{
             printf("\nAdios\n");
             opc =  -1;
