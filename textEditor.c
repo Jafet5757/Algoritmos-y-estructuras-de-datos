@@ -1,3 +1,13 @@
+/**
+ * @file textEditor.c
+ * @author Kevin Jafet Moran Orozco (moranorozcokevinjafet@gmail.com)
+ * @brief Editor de texto en C
+ * @version 0.1
+ * @date 2023-01-15
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
